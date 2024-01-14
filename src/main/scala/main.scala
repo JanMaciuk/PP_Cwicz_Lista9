@@ -95,3 +95,20 @@ def metoda2(): Unit = {
 def metoda3(): Unit = {
   throw new Exception("Wyjatek zgloszony w metoda3")
 }
+
+//Lista 10:
+// Class Klasa[+T](var x: T) x jest podtypem T lub T, np: do Klasa[Any] możemy przypisać Klasa[Int]
+// Class Klasa[-T](var x: T) T jest podtypem x lub x, np: do Klasa[Int] możemy przypisać Klasa[Any]
+/*Zadanie 1:
+  class GenericCellMut[+T] (var x: T)
+  Covariant type T occurs in contravariant position in type T of value x
+  Powyższy kod nie może się skompilować, w takiej klasie możemy zmienić wartość x, co nie jest dopuszczalne, ze względu na poniższy przykład:
+  val anyCell: GenericCellMut[Any] = new GenericCellMut[Int](1)
+  anyCell.x = "abc"
+  val i: Int = anyCell.x
+  W tym przykładzie moglibyśmy przypisać do zmiennej wartość innego typu.
+  Wersja kontrwariantna GenericCellMut[-T] (var x: T) podobnie nie może się skompilować, np:
+  val anyCell: GenericCellMut[Int] = new GenericCellMut[Any]("abc")
+  val i: Int = anyCell.x
+  Ponownie dochodzimy do niezgodnego typu.
+*/
