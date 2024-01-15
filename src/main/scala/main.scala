@@ -1,3 +1,5 @@
+import scala.collection.mutable
+import scala.collection.mutable.Seq
 @main
 def main(): Unit = {
   println("Hello world!")
@@ -97,6 +99,7 @@ def metoda3(): Unit = {
 }
 
 //Lista 10:
+
 // Class Klasa[+T](var x: T) x jest podtypem T lub T, np: do Klasa[Any] możemy przypisać Klasa[Int]
 // Class Klasa[-T](var x: T) T jest podtypem x lub x, np: do Klasa[Int] możemy przypisać Klasa[Any]
 /*Zadanie 1:
@@ -112,3 +115,13 @@ def metoda3(): Unit = {
   val i: Int = anyCell.x
   Ponownie dochodzimy do niezgodnego typu.
 */
+
+//Zadanie 4:
+def copy[T](dest: mutable.Seq[T], src: mutable.Seq[T]): Unit = {
+  var i = 0
+  while (i < src.size) {
+    dest.update(i, src(i))
+    i += 1
+  }
+}
+
